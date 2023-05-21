@@ -26,8 +26,9 @@ document.addEventListener("click", (event) => {
 });
 
 async function edit(id, newTitle) {
-  await fetch(`/${id}/${newTitle}`, {
+  await fetch(`/${id}`, {
     method: "PUT",
-    body: { title: JSON.stringify(newTitle) },
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ newTitle }),
   });
 }

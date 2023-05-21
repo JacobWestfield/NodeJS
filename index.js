@@ -30,8 +30,9 @@ app.get("/", async (req, res) => {
   });
 });
 
-app.put("/:id/:title", async (req, res) => {
-  await updateNote(req.params.id, req.params.title);
+app.put("/:id", async (req, res) => {
+  console.log("BODY - ", req.body);
+  await updateNote(req.params.id, req.body?.newTitle);
   res.render("index", {
     title: "Express App",
     notes: await getNotes(),
